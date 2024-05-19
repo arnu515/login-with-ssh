@@ -14,6 +14,7 @@ templ RootLayout(c echo.Context, title string) {
 			<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 			<title>{ title }</title>
 			<link rel="stylesheet" href="/pico.violet.min.css"/>
+			<script src="/htmx.min.js" defer></script>
 		</head>
 		<body data-hx-boost="true">
 			@components.Navbar(c)

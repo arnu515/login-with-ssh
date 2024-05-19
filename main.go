@@ -18,5 +18,10 @@ func main() {
 		return component.Render(context.Background(), c.Response())
 	})
 
+	app.GET("/login", func(c echo.Context) error {
+		component := pages.Login(c, nil)
+		return component.Render(context.Background(), c.Response())
+	})
+
 	app.Logger.Fatal(app.Start(":8080"))
 }
