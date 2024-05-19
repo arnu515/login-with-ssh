@@ -5,6 +5,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"login-with-ssh/templates"
+	"login-with-ssh/templates/pages"
 )
 
 func main() {
@@ -13,7 +14,7 @@ func main() {
 	app.Static("/", "./static")
 
 	app.GET("/", func(c echo.Context) error {
-		component := templates.Index()
+		component := pages.Index()
 		return component.Render(context.Background(), c.Response())
 	})
 
