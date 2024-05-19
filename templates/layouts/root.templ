@@ -15,8 +15,7 @@ templ RootLayout(c echo.Context, title string) {
 			<title>{ title }</title>
 			<link rel="stylesheet" href="/pico.violet.min.css"/>
 		</head>
-		<body>
-			@components.Navbar()
+		<body data-hx-boost="true">
 			@components.Navbar(c)
 			{ children... }
 		</body>
