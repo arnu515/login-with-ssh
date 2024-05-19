@@ -1,0 +1,40 @@
+package templates
+
+import "login-with-ssh/templates/layouts"
+
+templ Index() {
+	@layouts.RootLayout("Hello") {
+		<main class="container">
+			<section>
+				<h1>Login with SSH</h1>
+				<p>Proof-of-concept allowing users to login to this application using an SSH key.</p>
+				<a href="/signup" role="button">Sign Up</a>
+				<a href="/login" role="button">Login</a>
+			</section>
+			<section>
+				<h3>Motivations:</h3>
+				<ul>
+					<li>Passwords are garbage. A majority of users don't use a password manager, so they reuse passwords and make them easily guessable.</li>
+					<li>Passkeys were introduced to combat this. So I thought, if there are passkeys, why not SSH-keys?</li>
+					<li>Passkeys are not supported by all browsers, but everyone can SSH!</li>
+				</ul>
+				<h3>Drawbacks:</h3>
+				<ul>
+					<li>Good luck to you if you lose your key! (Maybe I can add a forgot password button that sends you an email?)</li>
+					<li>DON'T REUSE SSH KEYS PLEASE!</li>
+				</ul>
+				<p>I plan to add more methods to login later. So maybe this project should be renamed.</p>
+				<h3>Login methods checklist:</h3>
+				<ul>
+					<li>SSH Keys</li>
+					<li>Password</li>
+					<li>Magic Link</li>
+					<li>Passkeys</li>
+					<li>Social login (ew!)</li>
+					<li>TOTP</li>
+					<li><a href="https://github.com/arnu515/login-with-ssh/discussions">Suggest more!</a></li>
+				</ul>
+			</section>
+		</main>
+	}
+}
