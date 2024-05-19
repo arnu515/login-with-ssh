@@ -8,6 +8,9 @@ templ Navbar(c echo.Context) {
 			<li>
 				<strong>Not logged in</strong>
 			</li>
+			if c.Request().URL.Path != "/" {
+				<li><a href="/">Home</a></li>
+			}
 		</ul>
 		<ul>
 			<li><a href="/login">Login</a></li>
