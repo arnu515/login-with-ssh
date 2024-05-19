@@ -14,7 +14,7 @@ func main() {
 	app.Static("/", "./static")
 
 	app.GET("/", func(c echo.Context) error {
-		component := pages.Index()
+		component := pages.Index(c)
 		return component.Render(context.Background(), c.Response())
 	})
 

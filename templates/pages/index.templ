@@ -1,9 +1,12 @@
 package pages
 
-import "login-with-ssh/templates/layouts"
+import (
+	"login-with-ssh/templates/layouts"
+	"github.com/labstack/echo/v4"
+)
 
-templ Index() {
-	@layouts.RootLayout("Hello") {
+templ Index(c echo.Context) {
+	@layouts.RootLayout(c, "Hello") {
 		<main class="container">
 			<section>
 				<h1>Login with SSH</h1>
