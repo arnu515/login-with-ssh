@@ -96,3 +96,5 @@ templates/**/*.txt
 
 # Jetbrains
 .idea
+
+.env
