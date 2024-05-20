@@ -22,14 +22,23 @@ templ Signup(c echo.Context, authId *string) {
                 display: block;
                 font-size: .75rem;
             }
+            textarea {
+                resize: none;
+                font-family: monospace;
+            }
+            a {
+                display: block;
+                text-align: right;
+                margin-bottom: 1rem;
+            }
 	    </style>
 		<main class="container">
 			<h3 style="text-align: center">Sign Up</h3>
 			<form action="/signup" method="POST">
 				<label for="username">Enter your username</label>
-				<input type="text" id="username" name="username" placeholder="Enter username"/>
+				<input type="text" required minlength="4" id="username" name="username" placeholder="Enter username"/>
 				<label for="email">Enter your email</label>
-				<input type="email" id="email" name="email" placeholder="Enter email"/>
+				<input type="email" id="email" required name="email" placeholder="Enter email"/>
 				<button
 					type="submit"
 					style="width: 100%"
@@ -40,5 +49,33 @@ templ Signup(c echo.Context, authId *string) {
 				>Create account</button>
 			</form>
 		</main>
+		<script>
+		let showSshKeyField = false;
+		function onceSubmit(e) {
+            if (showSshKeyField) return
+            e.preventDefault()
+            showSshKeyField = true
+            const sshKeyFieldLabel = document.createElement("label")
+            sshKeyFieldLabel.innerText = "Enter your SSH PUBLIC key"
+            sshKeyFieldLabel.htmlFor = "sshKey"
+            const sshKeyField = document.createElement("textarea")
+            sshKeyField.id = "sshKey"
+            sshKeyField.name = "sshKey"
+            sshKeyField.required = true
+            sshKeyField.minlength = 10
+            sshKeyField.placeholder = "Enter your PUBLIC key."
+            sshKeyField.rows = 6
+            const sshKeyLink = document.createElement("a")
+            sshKeyLink.href="/ssh-key"
+            sshKeyLink.innerText = "What's this?"
+            const submitButton = document.querySelector("button")
+            submitButton.insertAdjacentElement("beforebegin", sshKeyFieldLabel)
+            submitButton.insertAdjacentElement("beforebegin", sshKeyField)
+            submitButton.insertAdjacentElement("beforebegin", sshKeyLink)
+            document.querySelector("form").removeEventListener("submit", onceSubmit)
+		}
+
+		document.querySelector("form").addEventListener("submit", onceSubmit)
+		</script>
 	}
 }
