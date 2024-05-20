@@ -1,0 +1,32 @@
+package pages
+
+import (
+	"login-with-ssh/templates/layouts"
+	"github.com/labstack/echo/v4"
+)
+
+templ SshKeyPage(c echo.Context) {
+	@layouts.RootLayout(c, "Creating an SSH Key") {
+		<main class="container">
+			<h1>What is an SSH Key?</h1>
+			<p>SSH Keys are a randomly-generated cryptographic keypair which is usually used to authenticate to an SSH server. There is a public key and a private key.</p>
+			<p>Let's say there are two people, Alice and Bob. Alice wants to connect to Bob's SSH server using her SSH keypair. She has to first give Bob her SSH public key, and then she can authenticate with her private key.</p>
+			<p>Hence, these names: Public and Private.</p>
+			<p>This website allows you to authenticate to a web service using SSH.</p>
+			<h1>Creating an SSH key</h1>
+			<p>The easiest way to create one would be to click the generate button that is available next to the SSH Key input. It will automatically create an ED25519 SSH key for you.</p>
+			<p>Alternatively, most *nix based operating systems, and Windows 10+, come with an SSH keygen tool out of the box. To use it to generate a keypair, run the below command in your terminal:</p>
+			<pre>
+				<code>ssh-keygen -t ed25519</code>
+			</pre>
+			<p><code>-t ed25519</code> specifies that the type of keypair to be created should be ED25519. Newer versions of <code>ssh-keygen</code> do this by default, but older ones still use RSA.</p>
+			<p>Check your user manual for more options.</p>
+			<p>Check <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">GitHub's SSH Key documentation</a> to learn more.</p>
+			<h1>Using your SSH key</h1>
+			<h3>While signing up</h3>
+			<p>While signing up to your account, paste your SSH <strong>PUBLIC KEY</strong> into the box when asked. Do <strong>NOT</strong> share your private key with anyone! We recommend setting a passphrase on your key.</p>
+			<h3>On an existing account</h3>
+			<p>Open your <a href="/settings">Settings</a> and add your SSH <strong>PUBLIC KEY</strong> there.</p>
+		</main>
+	}
+}
