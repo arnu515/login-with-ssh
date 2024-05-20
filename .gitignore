@@ -93,8 +93,10 @@ Temporary Items
 # Templ generated
 templates/**/*.go
 templates/**/*.txt
+!templates/flash_messages.go
 
 # Jetbrains
 .idea
 
 .env
+*.db

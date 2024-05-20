@@ -17,6 +17,7 @@ templ RootLayout(c echo.Context, title string) {
 		</head>
 		<body>
 			@components.Navbar(c)
+			@components.FlashedMessages()
 			{ children... }
 		</body>
 	</html>

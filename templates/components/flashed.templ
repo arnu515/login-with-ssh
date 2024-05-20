@@ -1,0 +1,20 @@
+package components
+
+import (
+	"login-with-ssh/templates"
+)
+
+templ FlashedMessages() {
+	for _, m := range templates.GetFlashedMessages() {
+		switch m.Type {
+			case "success":
+				<p style="color: green; text-align: center">{ m.Message }</p>
+			case "error":
+				<p style="color: red; text-align: center">{ m.Message }</p>
+			case "warning":
+				<p style="color: orange; text-align: center">{ m.Message }</p>
+			case "info":
+				<p style="color: lightseagreen; text-align: center">{ m.Message }</p>
+		}
+	}
+}
