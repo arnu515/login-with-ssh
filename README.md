@@ -13,7 +13,6 @@ For more information, check out: [LINK TO BE ADDED]
 - [Labstack Echo](https://echo.labstack.com)
 - [Templ](https://templ.guide)
 - [PicoCSS](https://picocss.com)
-- [HTMX](https://htmx.org)
 
 ## How to run
 
