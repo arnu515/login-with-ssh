@@ -28,6 +28,11 @@ func main() {
 		return component.Render(context.Background(), c.Response())
 	})
 
+	app.POST("/signup", func(c echo.Context) error {
+		component := pages.Signup(c, nil)
+		return component.Render(context.Background(), c.Response())
+	})
+
 	app.GET("/ssh-key", func(c echo.Context) error {
 		component := pages.SshKeyPage(c)
 		return component.Render(context.Background(), c.Response())
