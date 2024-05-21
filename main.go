@@ -4,11 +4,18 @@ import (
 	"context"
 
 	"github.com/labstack/echo/v4"
-	"login-with-ssh/templates"
+	"login-with-ssh/db"
 	"login-with-ssh/templates/pages"
 )
 
 func main() {
+	defer func() {
+		err := db.DB.Close()
+		if err != nil {
+			panic(err)
+		}
+	}()
+
 	app := echo.New()
 
 	app.Static("/", "./static")
