@@ -70,7 +70,7 @@ templ Signup(c echo.Context, authId *string, domain *string) {
 		  sshKey.addEventListener('input', onInput)
 		</script>
 	} else {
-	    @components.SSH(authId, domain)
+	    @components.SSH(*authId, *domain)
 	}
 	}
 }
