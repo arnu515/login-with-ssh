@@ -33,7 +33,7 @@ CREATE TABLE ssh_public_keys (
     user_id TEXT NOT NULL,
     key TEXT PRIMARY KEY,
     key_type TEXT NOT NULL,  -- ssh-rsa or ssh-ed25519
-    FOREIGN KEY(user_id) REFERENCES users(id)
+    FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 	`)
 	if err != nil {
@@ -44,7 +44,7 @@ CREATE TABLE ssh_queue (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id TEXT NOT NULL,
     at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY(user_id) REFERENCES users(id)
+    FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 	`)
 	if err != nil {
