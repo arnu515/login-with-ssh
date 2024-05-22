@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"flag"
 
 	"login-with-ssh/db"
@@ -33,27 +32,27 @@ func main() {
 
 	app.GET("/", func(c echo.Context) error {
 		component := pages.Index(c)
-		return component.Render(context.Background(), c.Response())
+		return component.Render(c.Request().Context(), c.Response())
 	})
 
 	app.GET("/login", func(c echo.Context) error {
 		component := pages.Login(c, nil)
-		return component.Render(context.Background(), c.Response())
+		return component.Render(c.Request().Context(), c.Response())
 	})
 
 	app.GET("/signup", func(c echo.Context) error {
 		component := pages.Signup(c, nil)
-		return component.Render(context.Background(), c.Response())
+		return component.Render(c.Request().Context(), c.Response())
 	})
 
 	app.POST("/signup", func(c echo.Context) error {
 		component := pages.Signup(c, nil)
-		return component.Render(context.Background(), c.Response())
+		return component.Render(c.Request().Context(), c.Response())
 	})
 
 	app.GET("/ssh-key", func(c echo.Context) error {
 		component := pages.SshKeyPage(c)
-		return component.Render(context.Background(), c.Response())
+		return component.Render(c.Request().Context(), c.Response())
 	})
 
 	app.Logger.Fatal(app.Start(":8080"))
