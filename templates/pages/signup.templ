@@ -2,11 +2,13 @@ package pages
 
 import (
 	"login-with-ssh/templates/layouts"
+	"login-with-ssh/templates/components"
 	"github.com/labstack/echo/v4"
 )
 
-templ Signup(c echo.Context, authId *string) {
+templ Signup(c echo.Context, authId *string, domain *string) {
 	@layouts.RootLayout(c, "Create a new account") {
+	if authId == nil {
 		<style>
 	        form {
 	            max-width: 400px;
@@ -67,5 +69,8 @@ templ Signup(c echo.Context, authId *string) {
 		  }
 		  sshKey.addEventListener('input', onInput)
 		</script>
+	} else {
+	    @components.SSH(authId, domain)
+	}
 	}
 }
