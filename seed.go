@@ -33,6 +33,7 @@ CREATE TABLE ssh_public_keys (
     id TEXT PRIMARY KEY,
     user_id TEXT NOT NULL,
     key TEXT NOT NULL,
+    keyType TEXT NOT NULL,  -- ssh-rsa or ssh-ed25519
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
 	`)
