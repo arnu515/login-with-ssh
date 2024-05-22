@@ -6,9 +6,9 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-templ Signup(c echo.Context, authId *string, domain *string) {
+templ Signup(c echo.Context, authId *string, sshHost *string) {
 	@layouts.RootLayout(c, "Create a new account") {
-		if authId == nil {
+		if authId == nil && sshHost == nil {
 			<style>
 	        form {
 	            max-width: 400px;
@@ -69,7 +69,7 @@ templ Signup(c echo.Context, authId *string, domain *string) {
 		  sshKey.addEventListener('input', onInput)
 		</script>
 		} else {
-			@components.SSH(*authId, *domain)
+			@components.SSH(authId, sshHost)
 		}
 	}
 }
