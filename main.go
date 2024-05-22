@@ -44,12 +44,12 @@ func main() {
 	})
 
 	app.GET("/signup", func(c echo.Context) error {
-		component := pages.Signup(c, nil)
+		component := pages.Signup(c, nil, nil)
 		return component.Render(c.Request().Context(), c.Response())
 	})
 
 	app.POST("/signup", func(c echo.Context) error {
-		component := pages.Signup(c, nil)
+		component := pages.Signup(c, nil, nil)
 		return component.Render(c.Request().Context(), c.Response())
 	})
 
