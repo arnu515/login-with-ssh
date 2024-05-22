@@ -43,9 +43,8 @@ CREATE TABLE ssh_public_keys (
 CREATE TABLE ssh_queue (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id TEXT NOT NULL,
-    key_id TEXT NOT NULL,
-    FOREIGN KEY(user_id) REFERENCES users(id),
-    FOREIGN KEY(key_id) REFERENCES ssh_public_keys(id)
+    at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(user_id) REFERENCES users(id)
 );
 	`)
 	if err != nil {
