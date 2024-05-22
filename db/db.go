@@ -17,7 +17,6 @@ func New() (*sql.DB, error) {
 	if !ok {
 		path = DefaultDBPath
 	}
-	println(path)
 	return sql.Open("libsql", path)
 }
 
