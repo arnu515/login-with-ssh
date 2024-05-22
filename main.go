@@ -22,7 +22,10 @@ func main() {
 	}()
 
 	if ToSeed {
-		seed()
+		err := seed()
+		if err != nil {
+			panic(err)
+		}
 		return
 	}
 
