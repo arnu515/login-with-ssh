@@ -35,9 +35,12 @@ func SignupUser(ctx context.Context, db *sql.DB, username, email, sshKeyType, ss
 	return iid, nil
 }
 
-func AddToSSHQueue(ctx context.Context, db *sql.DB, id string) error {
+func AddToSSHQueue(ctx context.Context, db *sql.DB, id string) (int64, error) {
 	// drop existing items
 	db.ExecContext(ctx, "DELETE FROM ssh_queue WHERE user_id = ?", id)
-	_, err := db.ExecContext(ctx, "INSERT INTO ssh_queue (user_id) VALUES (?)", id)
-	return err
+	res, err := db.ExecContext(ctx, "INSERT INTO ssh_queue (user_id) VALUES (?)", id)
+	if err != nil {
+		return 0, err
+	}
+	return res.LastInsertId()
 }
