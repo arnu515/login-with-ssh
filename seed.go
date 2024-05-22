@@ -30,9 +30,8 @@ CREATE TABLE users (
 	}
 	_, err = tx.Exec(`
 CREATE TABLE ssh_public_keys (
-    id TEXT PRIMARY KEY,
     user_id TEXT NOT NULL,
-    key TEXT NOT NULL,
+    key TEXT PRIMARY KEY,
     keyType TEXT NOT NULL,  -- ssh-rsa or ssh-ed25519
     FOREIGN KEY(user_id) REFERENCES users(id)
 );
@@ -42,7 +41,7 @@ CREATE TABLE ssh_public_keys (
 	}
 	_, err = tx.Exec(`
 CREATE TABLE ssh_queue (
-    id TEXT PRIMARY KEY,
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id TEXT NOT NULL,
     key_id TEXT NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(id),
