@@ -2,11 +2,17 @@ package main
 
 import (
 	"context"
+	"flag"
 
-	"github.com/labstack/echo/v4"
 	"login-with-ssh/db"
 	"login-with-ssh/templates/pages"
+
+	"github.com/labstack/echo/v4"
 )
+
+func init() {
+	flag.Parse()
+}
 
 func main() {
 	defer func() {
@@ -15,6 +21,11 @@ func main() {
 			panic(err)
 		}
 	}()
+
+	if ToSeed {
+		seed()
+		return
+	}
 
 	app := echo.New()
 
