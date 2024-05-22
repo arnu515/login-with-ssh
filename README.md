@@ -26,6 +26,8 @@ $ go run main.go
 
 Please format your code (`go fmt` and `templ fmt .`) before sending a PR!
 
+First, make sure your database is seeded by running `go run . -seed`.
+
 Run `templ generate -watch` to automatically generate templates when you save a file.
 
-I'll probably add something like [air](https://github.com/cosmtrek/air) in the future.
+Run `air` in another terminal to automatically reload the server when you save a file.
