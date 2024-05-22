@@ -8,8 +8,8 @@ import (
 
 templ Signup(c echo.Context, authId *string, domain *string) {
 	@layouts.RootLayout(c, "Create a new account") {
-	if authId == nil {
-		<style>
+		if authId == nil {
+			<style>
 	        form {
 	            max-width: 400px;
 	            margin: 1rem auto;
@@ -34,28 +34,27 @@ templ Signup(c echo.Context, authId *string, domain *string) {
                 margin-bottom: 1rem;
             }
 	    </style>
-		<main class="container">
-			<h3 style="text-align: center">Sign Up</h3>
-			<form action="/signup" method="POST">
-				<label for="email">Enter your email</label>
-				<input type="email" id="email" required name="email" placeholder="Enter email"/>
-				<label for="sshKey">Enter your SSH Public Key</label>
-				<textarea rows="6" minlength="10" required name="sshKey" id="sshKey" placeholder="Enter your PUBLIC SSH key." />
-				<a href="/ssh-key">What's this?</a>
-				<label for="username">Enter your username</label>
-				<input type="text" required minlength="4" id="username" name="username" placeholder="Enter username"/>
-				<button
-					type="submit"
-					style="width: 100%"
-					if authId != nil {
-						name="authId"
-						value={ *authId }
-					}
-				>Create account</button>
-			</form>
-		</main>
-
-		<script>
+			<main class="container">
+				<h3 style="text-align: center">Sign Up</h3>
+				<form action="/signup" method="POST">
+					<label for="email">Enter your email</label>
+					<input type="email" id="email" required name="email" placeholder="Enter email"/>
+					<label for="sshKey">Enter your SSH Public Key</label>
+					<textarea rows="6" minlength="10" required name="sshKey" id="sshKey" placeholder="Enter your PUBLIC SSH key."></textarea>
+					<a href="/ssh-key">What's this?</a>
+					<label for="username">Enter your username</label>
+					<input type="text" required minlength="4" id="username" name="username" placeholder="Enter username"/>
+					<button
+						type="submit"
+						style="width: 100%"
+						if authId != nil {
+							name="authId"
+							value={ *authId }
+						}
+					>Create account</button>
+				</form>
+			</main>
+			<script>
 		  const sshKey = document.getElementById('sshKey');
 		  const username = document.getElementById('username');
 		  function onInput(e) {
@@ -69,8 +68,8 @@ templ Signup(c echo.Context, authId *string, domain *string) {
 		  }
 		  sshKey.addEventListener('input', onInput)
 		</script>
-	} else {
-	    @components.SSH(*authId, *domain)
-	}
+		} else {
+			@components.SSH(*authId, *domain)
+		}
 	}
 }

@@ -28,16 +28,16 @@ script checkAuth(authId string) {
 }
 
 templ SSH(authId, sshHost string) {
-    <div class="container" style="text-align: center; margin: 2rem auto">
-        <h3>Authorize via SSH</h3>
-        <p id="runp">Run the following SSH command to log in to your account:</p>
-        <input
-            readonly
-            id="sshcmd"
-            onclick="this.select()"
-            value={"ssh -i path/to/your/keyfile " +authId+"@"+sshHost}
-        />
-        <p style="margin-top: 2rem; font-size: 0.85rem" id="wfa">Waiting for authorization...</p>
-    </div>
-    @checkAuth(authId)
+	<div class="container" style="text-align: center; margin: 2rem auto">
+		<h3>Authorize via SSH</h3>
+		<p id="runp">Run the following SSH command to log in to your account:</p>
+		<input
+			readonly
+			id="sshcmd"
+			onclick="this.select()"
+			value={ "ssh -i path/to/your/keyfile " + authId + "@" + sshHost }
+		/>
+		<p style="margin-top: 2rem; font-size: 0.85rem" id="wfa">Waiting for authorization...</p>
+	</div>
+	@checkAuth(authId)
 }
