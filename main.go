@@ -125,5 +125,9 @@ func main() {
 		return c.String(401, "Unauthorized")
 	})
 
+	app.GET("/health", func(c echo.Context) error {
+		return c.JSON(200, map[string]bool{"ok": true})
+	})
+
 	app.Logger.Fatal(app.Start(":8080"))
 }
