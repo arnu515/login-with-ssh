@@ -3,9 +3,10 @@ module login-with-ssh
 go 1.22.3
 
 require (
-	github.com/a-h/templ v0.2.680
+	github.com/a-h/templ v0.2.697
 	github.com/joho/godotenv v1.5.1
 	github.com/labstack/echo/v4 v4.12.0
+	github.com/oklog/ulid/v2 v2.1.0
 	github.com/tursodatabase/go-libsql v0.0.0-20240429120401-651096bbee0b
 )
 
@@ -15,7 +16,6 @@ require (
 	github.com/libsql/sqlite-antlr4-parser v0.0.0-20240327125255-dbf53b6cbf06 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	github.com/oklog/ulid/v2 v2.1.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	golang.org/x/crypto v0.22.0 // indirect
