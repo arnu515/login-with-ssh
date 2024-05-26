@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"os"
 	"strings"
 
 	"login-with-ssh/db"
@@ -129,5 +130,9 @@ func main() {
 		return c.JSON(200, map[string]bool{"ok": true})
 	})
 
-	app.Logger.Fatal(app.Start(":8080"))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	app.Logger.Fatal(app.Start(":" + port))
 }
